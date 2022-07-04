@@ -1,0 +1,48 @@
+Input: M = 11, N = 9
+Output: 2
+Explanation: Binary representation of the given 
+numbers are: 1011 and 1001, 
+2nd bit from right is different.
+
+Input: M = 52, N = 4
+Output: 5
+Explanation: Binary representation of the given 
+numbers are: 110100 and 0100, 
+5th-bit from right is different.
+
+---------
+Solution:
+
+package RailwayReservationSystem;
+
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			int n=sc.nextInt();
+			int m=sc.nextInt();
+			Solution ob=new Solution();
+			System.out.println(ob.posOfRightMostDiffBit(m ,n));
+		}
+	}
+}
+
+package RailwayReservationSystem;
+
+public class Solution {
+	public static int posOfRightMostDiffBit(int m, int n)
+    {
+        if(m == n) return -1;
+        
+        int count = 1;
+        while((m & 1) == (n & 1)) {
+            count++;
+            m = m >> 1;
+            n = n >> 1;
+        }
+        return count;
+    }
+}
