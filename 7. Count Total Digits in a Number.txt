@@ -1,0 +1,47 @@
+Example 1:
+
+Input:
+n = 1
+Output: 1
+Explanation: Number of digit in 1 is 1.
+
+Example 2:
+
+Input:
+n  = 99999
+Output: 5
+Explanation:Number of digit in 99999 is 5
+
+Solution:
+---------
+->
+package RailwayReservationSystem;
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			int n=sc.nextInt();
+			System.out.println(new Solution().countofdigit(n));
+		}
+	}
+}
+
+->
+package RailwayReservationSystem;
+import java.util.Scanner;
+public class Solution {
+	static int countofdigit(int n) {
+		int x=0,y,c=0;
+		if(n/10==0) {
+			return 1;
+		}
+		else
+			x=x+n%10;
+		c++;
+		return c+countofdigit(n/10);
+	}
+}
+	 

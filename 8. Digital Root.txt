@@ -1,0 +1,48 @@
+Example 1:
+
+Input:
+n = 1
+Output:  1
+Explanation: Digital root of 1 is 1
+
+Example 2:
+
+Input:
+n = 99999
+Output: 9
+Explanation: Sum of digits of 99999 is 45
+which is not a single digit number, hence
+sum of digit of 45 is 9 which is a single
+digit number.
+
+Solution:
+--------
+->
+package RailwayReservationSystem;
+
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			int n=sc.nextInt();
+			System.out.println(new Solution().digitalroot(n));
+		}
+	}
+}
+
+->
+package RailwayReservationSystem;
+import java.util.Scanner;
+public class Solution {
+	static int digitalroot(int n) {
+		int storage = 0;
+	       if(n<10){return n;}
+	       else{storage += n%10 + digitalroot(n/10);}
+	       if(storage<10){return storage;}
+	       else{return (storage%10) + digitalroot(storage/10);}
+	}
+}
+	 
