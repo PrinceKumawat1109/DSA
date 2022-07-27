@@ -1,0 +1,47 @@
+Example 1:
+
+Input:
+n = 9 p = 9 
+Output: 387420489
+Explanation: 387420489 is the value 
+obtained when 9 is raised to the 
+power of 9.
+
+Example 2:
+
+Input:
+n = 2 p = 9
+Output: 512
+Explanation: 512 is the value 
+obtained when 2 is raised to 
+the power of 9. 
+
+Solution:
+---------
+
+->
+
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			int n=sc.nextInt();
+			int p=sc.nextInt();
+			System.out.println(new Solution().RecursivePower(n,p));
+		}
+}
+
+->
+public class Solution {
+	public int RecursivePower(int n, int p) {
+		if(p==0) {
+			return 1;
+		}
+		else 
+			return n*RecursivePower(n,p-1);
+	}
+}
+	 
