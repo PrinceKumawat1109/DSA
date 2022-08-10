@@ -1,0 +1,303 @@
+Q.4)Given an array which consists of only 0, 1 and 2. Sort the array without using any sorting algo
+SOL)
+class Solution
+{
+    public static void sort012(int a[], int n)
+     {
+        int m=0;
+        int l=0;
+        int h=n-1;
+        while(m<=h)
+        {
+            if(a[m]==0){
+                int temp=a[m];
+                a[m]=a[l];
+                a[l]=temp;
+                m++;
+                l++;
+            }
+            else if(a[m]==1){
+                m++;
+            }
+            else{
+                int temp=a[m];
+                a[m]=a[h];
+                a[h]=temp;
+                h--;
+            }
+        }
+    }
+}
+
+Q.5)Move all the negative elements to one side of the array 
+SOL)
+import java.io.*;
+class GFG {
+    static void rearrange(int arr[], int n)
+    {
+        int j = 0, temp;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] < 0) {
+                if (i != j) {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+                j++;
+            }
+        }
+    }
+    static void printArray(int arr[], int n)
+    {
+        for (int i = 0; i < n; i++)
+            System.out.print(arr[i] + " ");
+    }
+    public static void main(String args[])
+    {
+        int arr[] = { -1, 2, -3, 4, 5, 6, -7, 8, 9 };
+        int n = arr.length;
+ 
+        rearrange(arr, n);
+        printArray(arr, n);
+    }
+}
+
+Q.6)Find the Union and Intersection of the two sorted arrays.
+SOL)
+class Solution{
+    public static int doUnion(int a[], int n, int b[], int m) 
+    {
+        //Your code here
+        Set <Integer> s=new HashSet<>();
+        for(int i=0;i<n;i++){
+            s.add(a[i]);
+        }
+        for(int i=0;i<m;i++){
+            s.add(b[i]);
+        }
+        return s.size();
+    }
+}
+
+Q.7)Write a program to cyclically rotate an array by one.
+SOL)
+class Compute 
+{
+    public void rotate(int arr[], int n)
+    {
+        int temp=arr[n-1];
+        for(int i=n-2;i>=0;i--){
+            arr[i+1]=arr[i];
+        }
+        arr[0]=temp;
+    }
+}
+
+Q.8)find Largest sum contiguous Subarray [V. IMP]
+SOL)
+class Solution{
+
+    // arr: input array
+    // n: size of array
+    //Function to find the sum of contiguous subarray with maximum sum.
+    long maxSubarraySum(int arr[], int n){
+        
+        // Your code here
+        int m=arr[0];
+        int c=arr[0];
+        for(int i=1;i<n;i++){
+            
+            if(c<0)
+            c=0;
+            c=c+arr[i];
+            if(c>m)
+            m=c;
+        }
+        return m;
+        // long maxsum=arr[0], currsum=arr[0];
+        //   for( int i=1; i<n; ++i){
+        //       if(currsum<0) currsum=0;
+        //       currsum+=arr[i];
+        //       if(currsum>maxsum) maxsum=currsum;
+        //  }
+        //  return maxsum;
+    }   
+}
+
+Q.9)Minimise the maximum difference between heights [V.IMP]
+SOL)
+class Solution {
+    int getMinDiff(int[] arr, int n, int k) {
+        // code here
+        // Arrays.sort(arr);
+        // int ans=arr[n-1]-arr[0];
+        // int small=arr[0]+k;
+        // int large=arr[n-1]-k;
+        // int min,max;
+        // for(int i=0; i<n-1;i++){
+        //     if(small<arr[i+1]-k)
+        //     min=small;
+        //     else
+        //     max=arr[i+1]-k;
+        //     if(large>arr[i]+k)
+        //     max=large;
+        //     else
+        //     min=arr[i]+k;
+        //     // mi= Math.min(small,arr[i+1]+k);
+        //     // ma= Math.max(large,arr[i]-k);
+        //     if (min >= 0) {
+        //         if (ans > (max - min)) {
+        //             ans = max - min;
+        //         }}
+        //     else  min=arr[0]+k;
+        // }
+        // return ans;
+        Arrays.sort(arr);
+        int ans = (arr[n - 1] + k) - (arr[0] + k); // Maximum possible height difference
+
+        int tempmax = arr[n - 1] - k; // Maximum element when we subtract k from whole array
+        int tempmin = arr[0] + k; // Minimum element when we add k to whole array
+        int max, min;
+        for (int i = 0; i < n - 1; i++) {
+            if (tempmax > (arr[i] + k)) {
+                max = tempmax;
+            } else {
+                max = arr[i] + k;
+            }
+            // max = Math.max(tempmax, arr[i] + k); // can also be used
+
+            if (tempmin < (arr[i + 1] - k)) {
+                min = tempmin;
+            } else {
+                min = arr[i + 1] - k;
+            }
+          if (min >= 0) {
+                if (ans > (max - min)) {
+                    ans = max - min;
+                }
+                // ans = Math.min(ans, max - min); // can also be used
+            } else {
+                min = arr[0] + k;
+            }
+        }
+
+        return ans;  // min = Math.min(tempmin, arr[i + 1] - k); // can also be used
+    }
+}
+
+Q.10)Minimum no. of Jumps to reach end of an array
+SOL)
+class Solution{
+    static int minJumps(int[] arr){
+        //your code here
+        // int n=arr.length;
+        // int jump=0;
+        // int count=0;
+        // if(arr[0]==0)
+        //     {   
+        //         return -1;
+        //     }
+        // while(jump<n)
+        // {
+        //     if(arr[jump]<n)
+        //     {
+        //         if(arr[jump]==0)
+        //         {
+        //             return -1;
+        //         }
+        //         else
+        //         {
+        //             jump=jump+arr[jump];
+        //             count=count+1;
+        //         }
+        //     }   
+        // }
+        // return count;
+          int step = arr[0];
+     int maxRange = step;
+     int jump =1;
+     int n =arr.length;
+     
+     if(arr[0] ==0 && n>1){
+         return -1;
+     }else if(arr[0] == 0){
+         return 0;
+     }
+     
+     
+     for(int i=1; i<arr.length; i++){
+         if(i>=n-1){
+             return jump;
+         }
+         
+         maxRange  = Math.max(maxRange, i+arr[i]);
+         step--;
+         if(step == 0){
+             jump++;
+             if(i>=maxRange){
+                 return -1;
+             }
+             step = maxRange -i;
+         }
+         
+     }
+     return jump;
+    }
+}
+
+Q.11) find duplicate in an array of N+1 Integers
+SOL)
+	class Solution {
+    public int findDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for (int i=1;i<nums.length;i++){
+            if(nums[i] == nums[i-1])
+                return nums[i];
+        }
+        return -1;
+    }
+}
+
+Q.12) Merge 2 sorted arrays without using Extra space.
+SOL)
+	 int temp[]= new int[n+m];// new temp array to store all values
+           int p=0,q=0,last=0;
+           for(int i=0;i<n+m;i++){
+               if((p>n-1)||(q>m-1))
+               break;
+               else
+               {
+                    if(arr1[p]>arr2[q]) //put the smaller value to temp first
+                   {
+                       temp[i]=arr2[q];
+                       q++;
+                   }
+                   else
+                   {
+                       temp[i]=arr1[p];
+                       p++;
+                   }
+               }
+               last=i;
+           }
+           
+           if (p>n-1) // adding rest of the values from the arrays to the temp
+                   for(int i=q;i<m;i++)
+                   {
+                       temp[++last]=arr2[q];
+                       q++;
+                   }
+           if (q>m-1) // adding rest of the values from the arrays to the temp
+                   for(int i=p;i<n;i++)
+                       {
+                           temp[++last]=arr1[p];
+                           p++;
+                       }
+
+           for (int i = 0; i < temp.length; i++) { // splitting the array
+               if(i<n)
+                   arr1[i]=temp[i];
+               else
+               arr2[i-n]=temp[i];
+           }
+   }
