@@ -1,0 +1,30 @@
+public class merge2arr{
+	static void merge(int m, int n, int A[], int B[]){
+		int e;
+	for(int i=0;i<m;i++){
+		if(A[i] >B[0]){
+			e=A[i];
+A[i]=B[0];
+B[0]=e;
+int j=0;
+while((j+1<n)&& (B[j]>B[j+1])){
+e=B[j];
+B[j+1]=e;
+j++;
+}
+}
+}
+}
+public static void main(String args[]){
+int a[]={1,2,6,8};
+int b[]={3,5,7};
+int m=a.length;
+int n=b.length;
+merge(m,n,a,b);
+for(int i=0;i<m;i++)
+	System.out.println(a[i]);
+for(int j=0;j<n;j++){
+	System.out.println();
+	System.out.pritnln(b[j]);
+}
+}

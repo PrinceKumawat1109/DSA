@@ -1,12 +1,11 @@
 public Sclass Main {
     static int maxSubArraySum(int a[]) {
-        int size = a.length;
-        int max = Integer.MIN_VALUE, max_ending_here = 0;
-        for (int i = 0; i < size; i++) {
-            max_ending_here = max_ending_here + a[i];
-            if (max < max_ending_here) max = max_ending_here;
-            if (max_ending_here < 0) max_ending_here = 0;
+        int max = Integer.MIN_VALUE, current = 0;
+        for (int i = 0; i < arr.length; i++) {
+            current = current + arr[i];
+            if (max < current) max = current;
+            if (current < 0) current = 0;
         }
-        return max_so_far;
+        return max;
     }
 }
