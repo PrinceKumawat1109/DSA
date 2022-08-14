@@ -1,0 +1,19 @@
+public class Solution{
+	static void common(int a[], int b[], int c[])
+{
+	int i=0,j=0,k=0;
+	while(i<a.length && j<b.length && c<c.length){
+		if(a[i]==b[j] && b[j]==c[k])
+			System.out.println(" "+ a[i]);
+			i++;
+			j++;	
+			k++;
+		else if(a[i]<b[j])
+			i++;
+		else if(b[j]<c[k])
+			j++;	
+		else 		
+			k++;
+}
+}
+}

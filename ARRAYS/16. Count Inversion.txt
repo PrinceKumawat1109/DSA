@@ -1,0 +1,31 @@
+class Solution{
+    long inversionCount(long a[], long n){
+       return  dividing(0, a.length-1, a);
+    }
+    long dividing(int x , int y, long a[]){
+        long c=0;
+        if(x<y){
+            int m = (x+y)/2;
+            c+=dividing(x, m, a);
+            c+=dividing(m+1, y, a);
+            c+=merging(x, m, y, a);
+        }
+        return c;
+    }
+    long merging(int x, int m , int y, long a[]){
+        long c=0;
+        long [] L = Arrays.copyOfRange(a, x, m+1);
+        long [] R = Arrays.copyOfRange(a, m+1, y+1);
+        int i=0, j=0, k=x;
+        while(i<L.length && j< R.length){
+            if(L[i]<=R[j]) a[k++]=L[i++];
+            else {
+                a[k++]=R[j++];
+                c+= m+1 -(x+i);
+            }
+        }
+        while(i<L.length) a[k++]=L[i++];
+        while(j<R.length) a[k++]=R[j++];
+        return c;
+    }
+}

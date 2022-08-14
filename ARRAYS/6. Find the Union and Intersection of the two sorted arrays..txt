@@ -37,7 +37,7 @@ class Solution{
 			s.add(a[i]);
 			i++;		
 			j++;}
-}
+		}
         return s.size();
     }
 }
