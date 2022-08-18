@@ -1,0 +1,17 @@
+class Solution{
+    public:
+    bool find3Numbers(int A[], int n, int sum)
+    {
+        sort(A, A+n);
+        for(int i=0; i<n-2; i++){
+            int low = i+1;
+            int high = n-1;
+            while(low<high){
+                if(A[low] + A[high]+A[i] == sum) return true;
+                else if(A[low] + A[high]+A[i] > y) high--;
+                else low++;
+            }
+        }
+        return false;
+    }
+};
