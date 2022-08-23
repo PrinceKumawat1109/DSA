@@ -1,0 +1,37 @@
+class Solution {
+    public int maxArea(int M[][], int n, int m) {
+       int[] dp = new int[M[0].length];
+       Arrays.fill(dp,0);
+       int maxArea = -1;
+       for(int i = 0 ; i < M.length; i++){
+           for(int j = 0; j < M[0].length; j++){
+               dp[j] = M[i][j] == 0 ? 0 : dp[j] + 1;
+           }
+           int area = calculateMaxArea(dp);
+           maxArea = Math.max(area,maxArea);
+       }
+       return maxArea;
+   }
+   
+   private int calculateMaxArea(int[] hist){
+       Stack<Integer> st = new Stack<>();
+       int i = 0;
+       int len = hist.length;
+       int maxArea = -1;
+       while(i < len){
+           if(st.isEmpty() || hist[st.peek()] < hist[i]){
+               st.push(i++);
+           }else{
+               int top = st.pop();
+               int area = hist[top] * (st.isEmpty() ? i : i - st.peek() -1);
+               maxArea = Math.max(area,maxArea);
+           }            
+       }
+       while(!st.isEmpty()){
+            int top = st.pop();
+            int area = hist[top] * (st.isEmpty() ? i : i - st.peek() -1);
+            maxArea = Math.max(area,maxArea);
+       }
+       return maxArea;
+   }
+}
