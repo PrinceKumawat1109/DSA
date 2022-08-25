@@ -1,0 +1,35 @@
+class Solution {
+    public List<String> find_permutation(String S) {
+        // Code here
+        char[] arr = S.toCharArray();
+        Arrays.sort(arr);
+        List<String> ans = new ArrayList<>();
+        findPermutationUtil(0,arr.length,arr, ans);
+        Collections.sort(ans);
+        return ans;
+    }
+    void findPermutationUtil(int idx,int n, char[] arr, List<String> ans){
+        if(idx == n){
+            ans.add(String.valueOf(arr));
+            return;
+        }
+        HashSet<Character> hset = new HashSet<>();
+        for(int i=idx; i<n; ++i){
+            char ch = arr[i];
+            if(hset.contains(ch)){
+                continue;
+            }
+            else{
+                hset.add(ch);
+            }
+            swap(arr,idx,i);
+            findPermutationUtil(idx+1,n,arr, ans);
+            swap(arr,idx,i);
+        }
+    }
+    void swap(char[] arr,int i, int j){
+        char temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
