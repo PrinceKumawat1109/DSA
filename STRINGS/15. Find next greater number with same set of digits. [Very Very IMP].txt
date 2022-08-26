@@ -1,0 +1,54 @@
+class Solution{
+    static List<Integer> nextPermutation(int N, int arr[]){
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        int lastPeek = -1;
+        
+        for(int i = N - 2; i >= 0; i--){
+            if(arr[i + 1] > arr[i]){
+                lastPeek = i + 1;
+                break;
+            }
+        }
+        
+        // If there is no peek. 
+        // That is if numbers are arranged in decending order.
+        // reverse the array
+        if(lastPeek == -1){
+            reverse(arr, 0, N - 1);
+        }else{
+            // Special case: 
+            // find value after peek which is in the range: (arr[lastPeek - 1], arr[lastPeek])
+            int index = lastPeek;
+            for(int i = lastPeek; i < N; i++){
+                if(arr[i] > arr[lastPeek - 1] && arr[i] < arr[index]){
+                     index = i;
+                }
+            }
+            
+            swap(arr, lastPeek - 1, index);
+            reverse(arr, lastPeek, N - 1);
+        }
+        
+        
+        //  copy arr 
+        for(int num:arr) ans.add(num);
+        
+        return ans;
+        
+    }
+    
+    static void reverse(int[] arr, int i, int j){
+        while(i < j){
+            swap(arr, i , j);
+            i++;
+            j--;
+        }
+    }
+    
+    static void swap(int[] arr, int i , int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}

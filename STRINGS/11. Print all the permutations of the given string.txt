@@ -1,6 +1,5 @@
 class Solution {
     public List<String> find_permutation(String S) {
-        // Code here
         char[] arr = S.toCharArray();
         Arrays.sort(arr);
         List<String> ans = new ArrayList<>();
