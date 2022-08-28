@@ -1,0 +1,51 @@
+class Solution
+{
+   public int[][] searchWord(char[][] grid, String word)
+   {
+       // Code here
+       ArrayList<Integer> arr = new ArrayList<>();
+       int rn = grid.length;
+       int cn =grid[0].length;
+       char character = word.charAt(0);
+       for(int r =0;r<grid.length;r++){
+           for(int c =0;c<grid[0].length;c++){
+               if(grid[r][c]==character){
+                   if(check(grid,rn ,cn ,word.substring(1) ,r ,c , word.charAt(1))==true){
+                       arr.add(r);
+                       arr.add(c);
+                   }
+               }
+           }
+       }
+       
+       int[][] ans = new int[arr.size()/2][2];
+       for(int i=0;i<arr.size()/2;i=i+2){
+           ans[i][0]=arr.get(i);
+           ans[i][1]=arr.get(i+1);
+       }
+       
+       return ans;
+   }
+   
+   public static boolean check(char[][] grid , int rn,int cn, String word , int row ,int column , char rigth){
+       if(row >= rn || column >=cn || row<0 || column<0 || grid[row][column]!= rigth){
+           return false;
+       }
+       
+       if(word.length()==0){
+           return true;
+       }
+       
+       boolean r = check(grid, rn,cn, word.substring(1),row,column+1,word.charAt(1));
+       boolean l = check(grid, rn,cn, word.substring(1),row,column-1,word.charAt(1));
+       boolean d = check(grid, rn,cn, word.substring(1),row+1,column,word.charAt(1));
+       boolean u = check(grid, rn,cn, word.substring(1),row-1,column,word.charAt(1));
+       boolean dl = check(grid, rn,cn, word.substring(1),row+1,column+1,word.charAt(1));
+       boolean dr = check(grid, rn,cn, word.substring(1),row+1,column-1,word.charAt(1));
+       boolean ul = check(grid, rn,cn, word.substring(1),row-1,column+1,word.charAt(1));
+       boolean ur = check(grid, rn,cn, word.substring(1),row-1,column-1,word.charAt(1));
+       
+       return false;
+       
+   }
+}
