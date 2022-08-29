@@ -1,0 +1,16 @@
+class Solution{
+    static int fun(String S) {
+        int count = 0, open = 0;
+        for (int i = 0; i < S.length(); i++) {
+            if (S.charAt(i) == '[') {
+                open++;
+            } else {
+                open--;
+                if (open < 0) {
+                    count = count - open;
+                }
+            }
+        }
+        return count;
+    }
+}
