@@ -1,0 +1,29 @@
+class Solution {
+    public int findSubString( String str) {
+        HashSet<Character> st = new HashSet<>();
+        int n = str.length();
+        for(int i = 0;i<n;i++){
+            st.add(str.charAt(i));
+        }
+        int k = st.size();
+        int ans = Integer.MAX_VALUE,start = 0;
+        HashMap<Character, Integer> mp = new HashMap<>();
+        for(int i = 0;i<n && start<n;i++){
+            char c = str.charAt(i);
+            mp.put(c,mp.getOrDefault(c,0)+1);
+            if(mp.size()==k){
+                while(mp.size()==k && start<n){
+                    ans = Math.min(ans,i-start+1);
+                    char tmp = str.charAt(start);
+                    if(mp.get(tmp)>1){
+                        mp.put(tmp,mp.get(tmp)-1);
+                    }else{
+                        mp.remove(tmp);
+                    }
+                    start++;
+                }
+            }
+        }
+        return ans;
+    }
+}
