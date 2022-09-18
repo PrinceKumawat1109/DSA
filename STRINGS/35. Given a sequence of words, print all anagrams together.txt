@@ -1,0 +1,15 @@
+class Solution {
+   public List<List<String>> Anagrams(String[] str) {
+       HashMap<String,List<String>> map = new HashMap<>();
+       for (String s:str) {
+           char arr[] = s.toCharArray();
+           Arrays.sort(arr);
+           String sort = new String(arr);
+           if(!map.containsKey(sort)){    
+               map.put(sort,new LinkedList<String>());
+           }
+               map.get(sort).add(s);
+       }
+       return new LinkedList<>(map.values());       
+   }
+}
