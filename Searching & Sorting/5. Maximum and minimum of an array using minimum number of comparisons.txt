@@ -1,0 +1,17 @@
+class Solution{
+    int middle(int A, int B, int C){
+        if(A<B && A<C){
+           if(B<C){
+               return B;
+           }
+           return C;
+       }
+       else if(A>B && A>C){
+           if(B<C){
+               return C;
+           }
+           return B;
+       }
+       return A;
+   }
+}
