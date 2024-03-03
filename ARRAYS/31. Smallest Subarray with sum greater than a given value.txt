@@ -1,0 +1,30 @@
+class Solution {
+    public static int smallestSubWithSum(int a[], int n, int x) {
+       int i = 0;
+       int min = n;
+       int sum = 0;
+       int j = 0;
+       while( i < n){
+           if(a[i] > x){
+               min = 1;
+               break;
+           }
+           
+           sum += a[i];
+           
+           if(sum > x){
+               
+               while(sum > x && j < i)
+               {
+               min = Math.min(min,i-j+1);
+                
+               sum = sum-a[j];
+               j++;
+               }
+           }
+          
+           i++;
+       }
+       return min;
+   }
+}

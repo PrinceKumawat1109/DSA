@@ -1,0 +1,14 @@
+class Solution{
+    public static int kthSmallest(int[] arr, int l, int r, int k) 
+    { 
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>();
+        for(int i=l;i<=r;i++){
+            maxHeap.add(arr[i]);
+        }
+        int ans=0;
+        for(int i=0;i<k;i++){
+            ans= maxHeap.poll();
+        }
+        return ans;
+    }
+}

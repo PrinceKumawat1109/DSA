@@ -1,0 +1,14 @@
+class Solution{
+   public String removeConsecutiveCharacter(String S){
+       String ans="";
+       for(int i=0; i<S.length()-1; i++)
+       {
+           if(S.charAt(i)!=S.charAt(i+1))
+           {
+                ans+=S.charAt(i);
+           }
+       }
+       ans = ans + S.charAt(S.length()-1);
+       return ans;
+   }
+}

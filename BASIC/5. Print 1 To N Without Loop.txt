@@ -1,0 +1,49 @@
+Example 1:
+
+Input:
+N = 10
+Output: 1 2 3 4 5 6 7 8 9 10
+
+Example 2:
+
+Input:
+N = 5
+Output: 1 2 3 4 5
+
+Solution:
+---------
+
+-> 
+package RailwayReservationSystem;
+
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			int n=sc.nextInt();
+			Solution obj=new Solution();
+			obj.print1toN(n);
+		}
+	}
+}
+
+->
+package RailwayReservationSystem;
+
+import java.util.Scanner;
+
+public class Solution {
+	static void print1toN(int n) {
+		if(n==0) {
+			return;
+		}
+		System.out.println(n +" ");
+		print1toN(n-1);
+	}
+}
+	 
+
+

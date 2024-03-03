@@ -1,0 +1,46 @@
+class Sol
+{
+   public static boolean isOpening(char a){
+       return (a=='{');
+   }
+   public static boolean isClosing(char a){
+       return (a=='}');
+   }
+   public static boolean isMatching(char a,char b){
+       return (a=='{'&&b=='}');
+   }
+   int countRev (String s)
+   {
+       Stack<Character> stack=new Stack<Character>();
+       if(s.length()%2==1)
+       {
+           return -1;
+       }
+       else{
+       for(int i=0;i<s.length();i++){
+           char x=s.charAt(i);
+           if(stack.isEmpty()){
+               stack.push(x);
+           }
+           else if(!stack.isEmpty()&&!isMatching(stack.peek(),x)){
+               stack.push(x);
+           }
+           
+           else if(!stack.isEmpty()&&isMatching(stack.peek(),x)){
+               stack.pop();
+           }
+       }
+       }
+       double opening=0,closing=0;
+       for(int i=0;i<stack.size();i++)
+       {
+           if(isOpening(stack.elementAt(i)))
+           {
+               opening++;
+           }
+           else
+            closing++;
+       }
+       return ((int)Math.ceil(opening/2)+(int)Math.ceil(closing/2));
+   }
+}

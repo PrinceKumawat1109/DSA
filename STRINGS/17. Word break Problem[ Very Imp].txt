@@ -1,0 +1,21 @@
+class Sol
+{
+   public static int wordBreak(String A, ArrayList<String> B )
+   {
+       //code here
+       if(fun(A,B,0)) return 1;
+       return 0;
+   }
+   
+   static boolean fun(String s, ArrayList<String> list, int ind){
+       if(s.length()==0) return true;
+       if(ind>=s.length()) return false;
+       
+       for (int i=ind;i<s.length();i++){
+           if(list.contains(s.substring(ind,i+1))){
+               if(fun(s.substring(i+1),list,0)) return true;
+           }
+       }
+       return false;
+   }
+}

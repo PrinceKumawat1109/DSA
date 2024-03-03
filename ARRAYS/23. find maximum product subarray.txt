@@ -1,0 +1,16 @@
+long long maxProduct(vector<int> arr, int n) {
+    long long mini = arr[0];
+    long long maxi = arr[0];
+    long long ans = arr[0];
+    
+    for(int i=1; i<n; i++){
+        if(arr[i] < 0)
+            swap(mini,maxi);
+            
+       maxi = max((long long)arr[i],arr[i]*maxi);
+       mini = min((long long)arr[i],arr[i]*mini);
+       ans  = max(ans,maxi);
+    }
+    
+    return ans;
+}

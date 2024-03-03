@@ -1,0 +1,45 @@
+Example 1:
+
+Input: N = 4, K = 0
+Output: No
+Explanation: Binary representation of 4 is 100, 
+in which 0th bit from LSB is not set. 
+So, return false.
+
+Example 2:
+
+Input: N = 4, K = 2
+Output: Yes
+Explanation: Binary representation of 4 is 100, 
+in which 2nd bit from LSB is set. 
+So, return true.
+
+Example 3:
+
+Input: N = 500, K = 3
+Output: No
+Explanation: Binary representation of 500 is 
+111110100, in which 3rd bit from LSB is not set. 
+So, return false.
+
+
+Solution:
+
+package Solution;
+
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			int n=sc.nextInt();
+			int k=sc.nextInt();
+			if((n&(1<<(k-1)))>0)
+				System.out.println("YES");
+			else
+				System.out.println("NO");
+		}
+	}
+}

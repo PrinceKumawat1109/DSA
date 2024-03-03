@@ -1,0 +1,20 @@
+class Solution {
+   static ArrayList<Integer> factorial(int N){
+       
+       ArrayList<Integer> result = new ArrayList<Integer>();
+       
+       java.math.BigInteger factorial = new java.math.BigInteger("1");
+       for (int i = 2; i <= N; i++) {
+           factorial = factorial.multiply(java.math.BigInteger.valueOf(i));
+       }
+       
+       String ans = factorial.toString();
+       
+       for (int i = 0; i < ans.length(); i++) {
+           char c = ans.charAt(i);
+           result.add(Integer.parseInt(String.valueOf(c)));
+       }
+
+       return result;
+   }
+}

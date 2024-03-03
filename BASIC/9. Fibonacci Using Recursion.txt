@@ -1,0 +1,46 @@
+Example 1:
+
+Input:
+n = 1
+Output: 1
+Explanation: The first fibonacci
+ number is 1
+
+Example 2:
+
+Input:
+n = 20
+Output:6765
+Explanation: The 20th fibonacci 
+number is 6765
+
+Solution:
+---------
+
+->
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			int n=sc.nextInt();
+			System.out.println(new Solution().fibonacci(n));
+		}
+	}
+}
+
+
+->
+import java.util.Scanner;
+public class Solution {
+	static int fibonacci(int n) {
+		if(n<2) {
+			return n;
+		}
+		else return fibonacci(n-1)+fibonacci(n-2);
+		
+	}
+}
+	 

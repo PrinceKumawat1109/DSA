@@ -1,0 +1,20 @@
+class Solution
+{
+    public int find_median(int[] v)
+    {
+        // Code here
+        Arrays.sort(v);
+        int n=v.length;
+        int low=0;
+        int high=n-1;
+        if(n%2==0)
+        {
+            int mid1=(int)(low+high)/2;
+            int mid2=mid1+1;
+            int a=(int)(v[mid1]+v[mid2])/2;
+            return a;
+        }
+        int mid=(int)(low+high)/2;
+        return v[mid];
+    }
+}

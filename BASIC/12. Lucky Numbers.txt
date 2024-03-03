@@ -1,0 +1,52 @@
+Example 1:
+
+Input:
+N = 5
+Output: 0
+Explanation: 5 is not a lucky number 
+as it gets deleted in the second 
+iteration.
+
+
+Example 2:
+
+Input:
+N = 19
+Output: 1
+Explanation: 19 is a lucky number
+
+Solution:
+---------
+
+->
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			Solution obj=new Solution();
+			int n=sc.nextInt();
+			System.out.println(obj.isLucky(n)? "1" : "0");
+		}
+	}
+}
+
+->
+import java.util.Scanner;
+public class Solution {
+	public static boolean isLucky(int n) {
+		for (int i=2;i<=n;i++) {
+			if(n%i==0) {
+				return false;
+			}
+			if(i>n) {
+				return true;
+			}
+			n=n-(n/i);
+		}
+		return true;
+	}
+}
+	 

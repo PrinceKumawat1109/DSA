@@ -1,0 +1,28 @@
+class Solution{
+    String secFrequent(String arr[], int N){
+        HashMap<String, Integer> map = new HashMap<>();
+        
+        //get Frequency
+        for(int i = 0; i < N; i++){
+            map.put(arr[i], map.getOrDefault(arr[i], 0)+1);
+        }
+        
+        TreeMap<Integer,String> map1 = new  TreeMap<Integer,String>();
+        ArrayList<String> adj = new ArrayList<>();
+        
+        //sort by value using TreeMap
+        for(String str: map.keySet()){
+            String val = str;
+            int key = map.get(str);
+            map1.put(key, val);
+        }
+        
+        // Store in ArrayList 
+        for(String str: map1.values()){
+            adj.add(str);
+        }
+        
+        //Fetch and return
+        return adj.get(adj.size() - 2);
+    }
+}

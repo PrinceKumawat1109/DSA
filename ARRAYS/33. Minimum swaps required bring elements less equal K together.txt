@@ -1,0 +1,23 @@
+class Solution    
+{
+public:     
+   int minSwap(int arr[], int n, int k) {
+       int cnt=0;
+       for(int i=0;i<n;i++){
+           if(arr[i]<=k)cnt++;
+       }
+       int ans=0;
+       int fans=0;
+       for(int i=0;i<cnt;i++){
+           if(arr[i]<=k)ans++;
+       }
+       fans=max(ans,fans);
+       for(int i=cnt;i<n;i++){
+           if(arr[i-cnt]<=k)ans--;
+           if(arr[i]<=k)ans++;
+           fans=max(ans,fans);
+       }
+       return cnt-fans;
+       // Complet the function
+   }
+};

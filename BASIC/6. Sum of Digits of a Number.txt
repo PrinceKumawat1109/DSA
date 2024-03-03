@@ -1,0 +1,47 @@
+Example 1:
+
+Input:
+n = 1
+Output: 1
+Explanation: Sum of digit of 1 is 1.
+
+Example 2:
+
+Input:
+n = 99999
+Output: 45
+Explanation: Sum of digit of 99999 is 45.
+
+Solution:
+---------
+->
+package RailwayReservationSystem;
+
+import java.util.Scanner;
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			int n=sc.nextInt();
+			System.out.println(new Solution().sumofdigit(n));
+		}
+	}
+}
+
+->
+package RailwayReservationSystem;
+
+import java.util.Scanner;
+
+public class Solution {
+	static int sumofdigit(int n) {
+		if(n==0) {
+			return 0;
+		}
+		else 
+			return sumofdigit(n/10)+n%10;
+	}
+}
+	 
